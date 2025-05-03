@@ -60,7 +60,7 @@ export const Dashboard = () => {
                 nameKey="name"
                 cx="50%"
                 cy="50%"
-                outerRadius="60%"
+                outerRadius="75%"
                 label={(entry) => `R$ ${entry.value.toFixed(2)}`}
               >
                 {amountByCategory.map((entry, index) => (
