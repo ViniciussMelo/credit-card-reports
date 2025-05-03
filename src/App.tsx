@@ -5,13 +5,17 @@ import { defaultTheme } from './styles/themes/default';
 import { GlobalStyle } from './styles/global';
 
 import { Router } from './Router';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Router />
+        <Provider store={store}>
+          <Router />
+        </Provider>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>

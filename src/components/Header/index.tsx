@@ -8,7 +8,7 @@ export function Header() {
       <Nav>
         <Link to="/">Inicio</Link>
         <Link to="/import">Importar CSV</Link>
-        <Link to="/report">Relatório</Link>
+        <Link to="/report">Relatórios</Link>
       </Nav>
     </HeaderContainer>
   )

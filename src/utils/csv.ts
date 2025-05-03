@@ -1,5 +1,5 @@
 export interface ICharge {
-  data: string;
+  date: string;
   title: string;
   amount: number;
   category: string;
@@ -13,7 +13,6 @@ export function parseCSV(content: string): ICharge[] {
 
   return rows.map(row => {
     const values = row.split(',').map(value => value.trim());
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const entry = {} as any;
 
     headers.forEach((header, index) => {
@@ -21,7 +20,7 @@ export function parseCSV(content: string): ICharge[] {
     });
 
     return {
-      data: entry.data,
+      date: entry.date,
       title: entry.title,
       amount: parseFloat(entry.amount.replace('R$', '').replace(',', '.')),
       category: entry.category || undefined

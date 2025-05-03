@@ -1,5 +1,7 @@
 import { FiUploadCloud } from 'react-icons/fi';
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import React from 'react';
 
 import { 
   ImportContainer, 
@@ -8,9 +10,13 @@ import {
   ImportHiddenInput, 
   ImportUploadLabel
 } from './styles';
+import { parseCSV } from '../../utils/csv';
+import { setChargers } from '../../reducers/charges/actions';
+import { getMonthFromDate } from '../../utils/date';
 
 export function Import() {
-  const [fileContent, setFileContent] = useState<string>('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -20,8 +26,15 @@ export function Import() {
     const reader = new FileReader();
 
     reader.onload = () => {
-      setFileContent(reader.result as string);
-      console.log('Conteúdo do CSV: ', reader.result);
+      const content = reader.result as string;
+      const parsed = parseCSV(content);
+
+      if(parsed.length) {
+        const firstDate = parsed[0].date;
+        const month = getMonthFromDate(firstDate);
+        dispatch(setChargers(month, parsed))
+        navigate('/report')
+      }
     };
 
     reader.readAsText(file);
