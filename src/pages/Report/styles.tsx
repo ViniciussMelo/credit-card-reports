@@ -49,6 +49,7 @@ export const TableContainer = styled.div`
     border-collapse: collapse;
     font-size: 0.9rem;
     min-width: 500px;
+    table-layout: fixed;
   }
 
   th, td {
@@ -56,6 +57,8 @@ export const TableContainer = styled.div`
     text-align: left;
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
+    overflow-wrap: break-word;
+    white-space: normal;
   }
 
   th {
