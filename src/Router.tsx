@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { DefaultLayout } from './layouts/DefaultLayout';
 import { Dashboard } from './pages/Dashboard';
-import { ReportPage } from './pages/Report';
+import { Report } from './pages/Report';
 import { Import } from './pages/Import';
 
 export function Router() {
@@ -11,7 +11,7 @@ export function Router() {
       <Route path='/' element={<DefaultLayout />}>
         <Route path='/' element={<Dashboard />}/>
         <Route path='import' element={<Import />}/>
-        <Route path='report' element={<ReportPage />}/>
+        <Route path='report' element={<Report/>}/>
       </Route>
     </Routes>
   )

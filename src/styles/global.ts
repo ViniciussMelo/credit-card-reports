@@ -12,4 +12,15 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 1rem;
   }
+
+  @media (max-width: 400px) {
+    .recharts-pie-label-text {
+      font-size: 10px !important;
+    }
+
+    .recharts-surface {
+      transform: scale(0.9); /* ou ajuste conforme necessário */
+      transform-origin: top center;
+    }
+  }
 `

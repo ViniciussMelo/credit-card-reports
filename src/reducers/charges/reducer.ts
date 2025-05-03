@@ -11,8 +11,6 @@ interface ChargesState {
 const persistedData = localStorage.getItem('@credit-card-reports:charges-data-state-1.0.0')
 const persistedMonth = localStorage.getItem('@credit-card-reports:charges-month-state-1.0.0')
 
-console.log('persistedData: ', persistedData)
-
 const initialState: ChargesState = {
   data: persistedData ? JSON.parse(persistedData) : {},
   selectedMonth: persistedMonth || null,
@@ -32,17 +30,26 @@ export function chargesReducer(
         },
         selectedMonth: action.payload.month,
       };
-    case ChargesActionTypes.CLEAR_CHARGES:
-      return {
-        ...state,
-        data: {},
-        selectedMonth: null
-      }
     case ChargesActionTypes.SELECT_MONTH:
         return {
           ...state,
           selectedMonth: action.payload ?? null,
         }
+    case ChargesActionTypes.DELETE_CHARGES: {
+      if (!action.payload) {
+        return {
+          ...state,
+          data: {},
+        };
+      }
+
+      const updatedData = { ...state.data };
+      delete updatedData[action.payload];
+      return {
+        ...state,
+        data: updatedData,
+      };
+    }
     default:
       return state;
   }

@@ -2,8 +2,8 @@ import { ICharge } from '../../utils/csv';
 
 export enum ChargesActionTypes {
   SET_CHARGES = 'SET_CHARGES',
-  CLEAR_CHARGES = 'CLEAR_CHARGES',
-  SELECT_MONTH = 'SELECT_MONTH'
+  SELECT_MONTH = 'SELECT_MONTH',
+  DELETE_CHARGES = 'DELETE_CHARGES'
 }
 
 export function setChargers(month: string, charges: ICharge[]) {
@@ -16,9 +16,10 @@ export function setChargers(month: string, charges: ICharge[]) {
   }
 }
 
-export function clearChargers() {
+export function deleteCharges(month: string | null) {
   return {
-    type: ChargesActionTypes.CLEAR_CHARGES
+    type: ChargesActionTypes.DELETE_CHARGES,
+    payload: month
   }
 }
 

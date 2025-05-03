@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { HeaderContainer, Nav, Title } from './styles';
 
 export function Header() {
@@ -6,9 +6,9 @@ export function Header() {
     <HeaderContainer>
       <Title>Credit Card Reports</Title>
       <Nav>
-        <Link to="/">Inicio</Link>
-        <Link to="/import">Importar CSV</Link>
-        <Link to="/report">Relatórios</Link>
+        <NavLink to="/">Inicio</NavLink>
+        <NavLink to="/import">Importar CSV</NavLink>
+        <NavLink to="/report">Relatórios</NavLink>
       </Nav>
     </HeaderContainer>
   )

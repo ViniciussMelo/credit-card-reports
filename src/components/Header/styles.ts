@@ -55,4 +55,9 @@ export const Nav = styled.nav`
   a:hover {
     opacity: 0.9;
   }
+
+  .active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 `;
