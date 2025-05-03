@@ -76,7 +76,7 @@ export const Report = () => {
           <tfoot>
             <tr>
               <td colSpan={3}><strong>Total</strong></td>
-              <td><strong>R$ {total}</strong></td>
+              <td><strong>R$ {total.toFixed(2)}</strong></td>
             </tr>
           </tfoot>
         </table>
